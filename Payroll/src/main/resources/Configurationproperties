@@ -1,0 +1,5 @@
+url = https://www.qabible.in/payrollapp/site/login
+ImplicitWait = 10s
+chromedriverPath = C:\\Chrome Driver\\chromedriver.exe
+edgedriverPath = C:\\Edge Driver\\msedgedriver.exe
+afterloginurl = https://www.qabible.in/payrollapp/site/login
