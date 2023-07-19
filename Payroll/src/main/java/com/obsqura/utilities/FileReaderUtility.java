@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class FileReaderUtility {
-	
+
 	Properties properties;
-	//relative directory 
+	// relative directory
 	String path = System.getProperty("user.dir");
-	private final String propertyFilePath= path+ "//src//main//resources//Configurationproperties";
-	
-	public FileReaderUtility(){
+	private final String propertyFilePath = path + "//src//main//resources//Configurationproperties";
+
+	public FileReaderUtility() {
 		BufferedReader reader;
 		try {
 			reader = new BufferedReader(new FileReader(propertyFilePath));
@@ -27,30 +27,40 @@ public class FileReaderUtility {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			throw new RuntimeException("Configuration.properties not found at " + propertyFilePath);
-		}	
-		
+		}
+
 	}
+
 	public String getApplicationUrl() {
 		String url = properties.getProperty("url");
-		if(url != null) return url;
-		else throw new RuntimeException("url not specified in the Configuration.properties file.");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("url not specified in the Configuration.properties file.");
 	}
-	
-	public String getchromeDriverPath(){
+
+	public String getchromeDriverPath() {
 		String driverPath = properties.getProperty("chromedriverPath");
-		if(driverPath!= null) return driverPath;
-		else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");		
+		if (driverPath != null)
+			return driverPath;
+		else
+			throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
 	}
-	public String getedgeDriverPath(){
+
+	public String getedgeDriverPath() {
 		String driverPath = properties.getProperty("edgedriverPath");
-		if(driverPath!= null) return driverPath;
-		else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");		
+		if (driverPath != null)
+			return driverPath;
+		else
+			throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
 	}
-	
+
 	public String getAfterLoginUrl() {
 		String url = properties.getProperty("afterloginurl");
-		if(url != null) return url;
-		else throw new RuntimeException("url not specified in the Configuration.properties file.");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("url not specified in the Configuration.properties file.");
 	}
-	
+
 }

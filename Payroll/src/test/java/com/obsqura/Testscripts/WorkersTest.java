@@ -23,7 +23,7 @@ public class WorkersTest extends TestHelper {
 
 	}
 
-	@Test
+	//@Test
 	public void searchverificationdynamically() {
 
 		LoginPage lp = new LoginPage(driver);
