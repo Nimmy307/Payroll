@@ -56,24 +56,25 @@ public class Workerspage extends PageUtility {
 
 	@FindBy(xpath = "//*[@id='w1']/table/tbody/tr[2]/td[7]")
 	WebElement actualnum;
-	
-	@FindBy (xpath ="//*[@id= 'workersearch-postcode']")
+
+	@FindBy(xpath = "//*[@id= 'workersearch-postcode']")
 	WebElement postcode;
-	
-	@FindBy (xpath ="//*[@id= 'w1']/table/tbody/tr[1]/td[8]/a[3]")
+
+	@FindBy(xpath = "//*[@id= 'w1']/table/tbody/tr[1]/td[8]/a[3]")
 	WebElement deleteentry;
-	
-	@FindBy (xpath = "//*[@id=\"w1\"]/table/tbody/tr/td[2]")
+
+	@FindBy(xpath = "//*[@id=\"w1\"]/table/tbody/tr/td[2]")
 	WebElement deletedentry;
 
 	public Workerspage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public void workersclick() {
 		Worker.click();
 	}
+
 	public boolean isworkerspageloaded() {
 		if (Worker.isDisplayed()) {
 			return true;
@@ -92,16 +93,15 @@ public class Workerspage extends PageUtility {
 		return columnsearchcheck(column1, column1value, driver);
 	}
 
-
 	public void view() {
 		Worker.click();
 		view.click();
 	}
 
-	
 	public String checkview() {
 		return receivednum.getText();
 	}
+
 	public void edit() {
 		Worker.click();
 		edit.click();
@@ -117,5 +117,5 @@ public class Workerspage extends PageUtility {
 		}
 		return false;
 	}
-	
+
 }

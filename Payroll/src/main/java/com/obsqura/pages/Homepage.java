@@ -35,7 +35,7 @@ public class Homepage {
 	@FindBy(xpath = "//*[@id= 'w1']/table/tbody/tr/td[1]")
 	WebElement receivedid;
 
-   WaitUtility wu;
+	WaitUtility wu;
 
 	public Homepage(WebDriver driver) {
 		this.driver = driver;
@@ -62,40 +62,41 @@ public class Homepage {
 
 		search.click();
 	}
+
 //for assertion
-		public String namereceived() {
+	public String namereceived() {
 		wu.waitforelementtobepresent(receivedname);
-			  System.out.println(receivedname.getText()); 
-			  return receivedname.getText();
-			  
-			  }
-		public String Idreceived() {
-			System.out.println(receivedid.getText());
-			return receivedid.getText()	;
-		}
-			 
-   public void searchwithname(String clientname) {
-   
-	   wu = new WaitUtility(driver);
+		System.out.println(receivedname.getText());
+		return receivedname.getText();
+
+	}
+
+	public String Idreceived() {
+		System.out.println(receivedid.getText());
+		return receivedid.getText();
+	}
+
+	public void searchwithname(String clientname) {
+
+		wu = new WaitUtility(driver);
 		wu.waitforelementtobepresent(clients);
 		clients.click();
 
 		wu.waitforelementtobepresent(enterclientname);
 		enterclientname.sendKeys(clientname);
-		
-		search.click();
-   }
-   
-   public boolean isnamedisplayedproperly(String clientname) {
-	   
-	   wu = new WaitUtility(driver);
-	   wu.waitforelementtobepresent(receivedname);
-	   
-	   if (receivedname.getText()==clientname) {
-		  return true;
-	   }
-	   return false;
-   }
-   
-}
 
+		search.click();
+	}
+
+	public boolean isnamedisplayedproperly(String clientname) {
+
+		wu = new WaitUtility(driver);
+		wu.waitforelementtobepresent(receivedname);
+
+		if (receivedname.getText() == clientname) {
+			return true;
+		}
+		return false;
+	}
+
+}

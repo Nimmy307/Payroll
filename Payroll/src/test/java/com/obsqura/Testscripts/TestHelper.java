@@ -23,43 +23,45 @@ public class TestHelper {
 	@BeforeMethod
 	@Parameters("chromebrowser")
 	public void BrowserLaunch(@Optional("chrome") String browser) {
-		FileReaderUtility fr = new FileReaderUtility(); // object creation of file reader as the url is mentioned in confif file and that is taken through file reader
-		if(browser.equalsIgnoreCase("chrome")) {
-		System.setProperty("webdriver.chrome.driver", fr.getchromeDriverPath());
-		driver = new ChromeDriver();
+		FileReaderUtility fr = new FileReaderUtility(); // object creation of file reader as the url is mentioned in
+														// confif file and that is taken through file reader
+		if (browser.equalsIgnoreCase("chrome")) {
+			System.setProperty("webdriver.chrome.driver", fr.getchromeDriverPath());
+			driver = new ChromeDriver();
 		}
-		
+
 		else if (browser.equalsIgnoreCase("edge")) {
 			System.setProperty("webdriver.edge.driver", fr.getedgeDriverPath());
 			driver = new EdgeDriver();
-			}
-		
+		}
+
 		driver.manage().window().maximize();
-		//cross browser create
+		// cross browser create
 		driver.get(fr.getApplicationUrl());
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		
+
 	}
+
 //@Test
-public void test() {
-	
-	
-}
+	public void test() {
+
+	}
+
 	@AfterMethod
-		public void screenShot(ITestResult result) {
-			if (ITestResult.FAILURE == result.getStatus()) {
-				try {
-					TakesScreenshot screenshot = (TakesScreenshot) driver;
-					File src = screenshot.getScreenshotAs(OutputType.FILE);
-					String path = System.getProperty("user.dir");
-					FileUtils.copyFile(src,new File(path+"\\target"+result.getName()+".png"));
-					System.out.println("Successfully captured a screenshot");
-				} catch (Exception e) {
-					System.out.println("Exception while taking screenshot " + e.getMessage());
-				}
+	public void screenShot(ITestResult result) {
+		if (ITestResult.FAILURE == result.getStatus()) {
+			try {
+				TakesScreenshot screenshot = (TakesScreenshot) driver;
+				File src = screenshot.getScreenshotAs(OutputType.FILE);
+				String path = System.getProperty("user.dir");
+				FileUtils.copyFile(src, new File(path + "\\target" + result.getName() + ".png"));
+				System.out.println("Successfully captured a screenshot");
+			} catch (Exception e) {
+				System.out.println("Exception while taking screenshot " + e.getMessage());
 			}
+		}
 		driver.close();
-		
+
 	}
 
 }
